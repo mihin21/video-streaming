@@ -32,13 +32,18 @@ class Home extends BaseController
         $data = [];
         $getUserId = Services::auth()->id();
         $model = model(Upload::class);
+
+        $videos = $model->findAll();
+        $data = [
+            'videos' => $videos
+        ];
+
         if ($this->request->getMethod() == 'post') {
             
             if (!$this->validate($rules)) {
                 $data['validation'] = $this->validator;
             } else {
               
-
                 if(!empty($this->request->getFile('video'))){
                     $data['video'] = $this->request->getFile('video');
                 }
@@ -64,10 +69,9 @@ class Home extends BaseController
                 $session = session();
                 $session->setFlashdata('success','l\'enregistrement reussi');
                 return redirect()->back();
-
             }
         }
-        return view('dashboard', $data);
+        return view('dashboard', $data,['videos' => $videos]);
     }
 
     public function confirm()
