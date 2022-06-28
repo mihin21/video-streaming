@@ -9,7 +9,7 @@ class CreateUploadTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' =>[
+            'upload_id' =>[
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -32,7 +32,7 @@ class CreateUploadTable extends Migration
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp'
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('upload_id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->createTable('uploads');
     }

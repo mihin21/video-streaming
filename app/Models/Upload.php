@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class Upload extends Model
 {
     protected $table            = 'uploads';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'upload_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

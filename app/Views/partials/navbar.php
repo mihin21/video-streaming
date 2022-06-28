@@ -20,14 +20,16 @@ use Fluent\Auth\Facades\Auth;
           <a class="nav-link" href="#">Mes videos</a>
         </li>
       </ul>
-      <div class="d-flex">
-            <div class="p-2 fw-bold ">
-              <a class="text-decoration-none" href="<?= route_to('profile') ?>"><?= Auth::user()->username ?></a>
-            </div>
-            <form action='<?= route_to('logout')?>' method='post'>
-                <button type="submit" class='text-white text-decoration-none fw-bold btn btn-info'>Deconnexion</button>
-            </form>
-      </div>
+      <?php if (Auth::check()) : ?>
+        <div class="d-flex">
+          <div class="p-2 fw-bold ">
+            <a class="text-decoration-none" href="<?= route_to('profile') ?>"><?= Auth::user()->username ?></a>
+          </div>
+          <form action='<?= route_to('logout') ?>' method='post'>
+            <button type="submit" class='text-white text-decoration-none fw-bold btn btn-info'>Deconnexion</button>
+          </form>
+        </div>
+      <?php endif ?>
     </div>
   </div>
 </nav>

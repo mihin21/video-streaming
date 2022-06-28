@@ -42,7 +42,7 @@
 				<div class="card-body">
 					<h5 class="card-title">Card title</h5>
 					<p class="card-text"><?= esc($video['description']) ?></p>
-					<a href="/video/<?= esc($video['id']) ?>" class="btn btn-primary">Regarder</a>
+					<a href="/video/<?= esc($video['upload_id']) ?>" class="btn btn-primary">Regarder</a>
 				</div>
 			</div>
 		</div>

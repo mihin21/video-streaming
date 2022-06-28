@@ -47,6 +47,7 @@ $routes->group('dashboard', ['filter' => 'auth:web'], function ($routes) {
     $routes->get('confirm', 'Home::confirm', ['filter' => 'confirm']);
 });
 $routes->match(['get','post'],'/video/(:num)', 'Video::index/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
