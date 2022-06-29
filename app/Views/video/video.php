@@ -5,8 +5,27 @@
 <div class="container my-4">
     <video src="/uploads/video/<?= esc($video['video']) ?>" controls width="100%"></video>
     <div class="my-4">
-        <button class="btn btn-primary" type="submit">Like</button>
-        <button class="btn btn-primary" type="submit">Souscrire</button>
+ 
+            <?php if($like_user['user_id']) :?>
+                <a href="/like/<?= esc($video['upload_id']) ?>">
+                    <button class="btn btn-primary" type="submit">Like</button>
+                </a>
+            <?php endif; ?>
+
+        <span class="fw-bold">
+            <?= esc($likes) ?> likes ||
+        </span>    
+        <?php if($video['user_id'] == auth()->user()->id) :?>
+            <?php elseif($subscribe_user['user_id']  == auth()->user()->id) :?>
+                <?php else:?>  
+          <a href="/subscribe/<?= esc($video['upload_id']) ?>">
+            <button class="btn btn-primary" type="submit">Souscrire</button>
+          </a>
+        <?php endif; ?>
+
+        <span class="fw-bold">
+            <?= esc($subscribe_count) ?> Abonnés
+        </span> 
     </div>
     <div>
     <div class="my-2">

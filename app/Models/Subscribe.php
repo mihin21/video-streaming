@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Upload extends Model
+class Subscribe extends Model
 {
-    protected $table            = 'uploads';
-    protected $primaryKey       = 'upload_id';
+    protected $table            = 'subscribes';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id','video','image','description'];
+    protected $allowedFields    = ['post_id','user_id'];
 
     // Dates
     protected $useTimestamps = false;
@@ -28,4 +28,14 @@ class Upload extends Model
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
+    // Callbacks
+    protected $allowCallbacks = true;
+    protected $beforeInsert   = [];
+    protected $afterInsert    = [];
+    protected $beforeUpdate   = [];
+    protected $afterUpdate    = [];
+    protected $beforeFind     = [];
+    protected $afterFind      = [];
+    protected $beforeDelete   = [];
+    protected $afterDelete    = [];
 }

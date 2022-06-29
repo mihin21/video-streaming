@@ -14,7 +14,7 @@ use Fluent\Auth\Facades\Auth;
           <a class="nav-link active" aria-current="page" href="#">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="/profile/<?= Auth::user()->id ?>">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Mes videos</a>

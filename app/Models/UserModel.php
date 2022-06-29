@@ -36,6 +36,7 @@ class UserModel extends Model implements UserProviderInterface
     protected $allowedFields = [
         'email',
         'username',
+        'image',
         'password',
         'email_verified_at',
         'remember_token',

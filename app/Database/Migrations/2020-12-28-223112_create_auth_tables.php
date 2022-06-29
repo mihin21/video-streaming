@@ -18,6 +18,7 @@ class CreateAuthTables extends Migration
             'id'                => ['type' => 'int', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'email'             => ['type' => 'varchar', 'constraint' => 255],
             'username'          => ['type' => 'varchar', 'constraint' => 30, 'null' => true],
+            'image'          =>  ['type' => 'varchar', 'constraint' => 30, 'null' => true],
             'password'          => ['type' => 'varchar', 'constraint' => 255],
             'email_verified_at' => ['type' => 'datetime', 'null' => true],
             'remember_token'    => ['type' => 'varchar', 'constraint' => 255, 'null' => true],
