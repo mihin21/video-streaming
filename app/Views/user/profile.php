@@ -4,14 +4,23 @@
 
 
 <div class="container-lg my-4 ">
-
+<?php if (isset($validation)) : ?>
+		<div class="alert alert-danger">
+			<?= $validation->listErrors() ?>
+		</div>
+	<?php endif; ?>
+	<?php if (session()->get('success')) : ?>
+		<div class="alert alert-success">
+			<?= session()->get('success') ?>
+		</div>
+	<?php endif; ?>
     <div class="row justify-content-center">
-        
         <div class="col-md-5">
             <?php if(empty($getUser->image)) : ?>
                 <img src="/uploads/image/user.png" width="75%" alt="">
             <?php else: ?>
-                ffqdfq
+                <img src="/uploads/image/<?= $getUser->image  ?>" width="75%" alt="">
+              
             <?php endif;?>        
         </div>
         <div class="col-md-5">

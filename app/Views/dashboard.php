@@ -35,18 +35,23 @@
 	</div>
 
 	<div class="row my-3">
-		<?php foreach($videos as $video) : ?>
-		<div class="col">
-			<div class="card" style="width: 18rem;">
-				<img src="/uploads/image/<?= esc($video['image']) ?>" class="card-img-top" alt="" height="150px">
-				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text"><?= esc($video['description']) ?></p>
-					<a href="/video/<?= esc($video['upload_id']) ?>" class="btn btn-primary">Regarder</a>
-				</div>
+		<?php if(empty($videos))  : ?>
+			<div class="alert alert-danger">
+				Aucune video disponible !!
 			</div>
-		</div>
-		<?php endforeach ; ?>
+		<?php endif ; ?>
+		<?php foreach($videos as $video) : ?>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<img src="/uploads/image/<?= esc($video['image']) ?>" class="card-img-top" alt="" height="150px">
+						<div class="card-body">
+							<h5 class="card-title">Description</h5>
+							<p class="card-text"><?= esc($video['description']) ?></p>
+							<a href="/video/<?= esc($video['upload_id']) ?>" class="btn btn-primary">Regarder</a>
+						</div>
+					</div>
+				</div>
+		<?php endforeach ; ?>	
 	</div>
 </div>
 <?= $this->endSection() ?>

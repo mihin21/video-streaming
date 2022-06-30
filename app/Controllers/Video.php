@@ -17,9 +17,9 @@ class Video extends BaseController
         $model = model(Upload::class);
         $video =  $model->where('upload_id', $id)->join('users', 'users.id = uploads.user_id')->first();
 
-        if (!$video) {
-            return view('errors/html/error_404');
-        }
+        // if (!$video) {
+        //     return view('errors/html/error_404');
+        // }
 
         $comment = model(Comment::class);
         $comments = $comment->where('post_id', $id)->join('users', 'users.id = comments.user_id')->orderBy('comment_id', 'DESC')->find();

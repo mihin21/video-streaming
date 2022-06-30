@@ -33,7 +33,7 @@ class CreateUploadTable extends Migration
             'updated_at datetime default current_timestamp on update current_timestamp'
         ]);
         $this->forge->addKey('upload_id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id');
+        
         $this->forge->createTable('uploads');
     }
 

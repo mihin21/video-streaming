@@ -46,10 +46,10 @@ $routes->group('dashboard', ['filter' => 'auth:web'], function ($routes) {
     $routes->match(['get','post'],'/', 'Home::dashboard',['as'=>'storeVideos']);
     $routes->get('confirm', 'Home::confirm', ['filter' => 'confirm']);
 });
-$routes->match(['get','post'],'/video/(:num)', 'Video::index/$1');
-$routes->match(['get','post'],'/like/(:num)','video::like/$1');
-$routes->match(['get','post'],'/subscribe/(:num)','video::subscribe/$1');
-$routes->match(['get','post'],'/profile/(:num)', 'Profile::index/$1');
+$routes->match(['get','post'],'/video/(:num)', 'Video::index/$1',['filter' => 'auth:web']);
+$routes->match(['get','post'],'/like/(:num)','video::like/$1',['filter' => 'auth:web']);
+$routes->match(['get','post'],'/subscribe/(:num)','video::subscribe/$1',['filter' => 'auth:web']);
+$routes->match(['get','post'],'/profile/(:num)', 'Profile::index/$1',['filter' => 'auth:web']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

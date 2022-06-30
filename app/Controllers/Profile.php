@@ -15,13 +15,14 @@ class Profile extends BaseController
         $data = [
             'getUser' => $getUser
         ];
-        return view('user/profile',$data);
 
         if ($this->request->getMethod() == 'post') {
 
             $rules = [
-                'username'              => 'required',
-                'email'                 => 'required|valid_email',
+                'username'     => 'required',
+                'email'        => 'required|valid_email',
+                'password'     => 'max_length[8]',
+                'image'        => 'uploaded[image]|ext_in[image,png,jpg,gif,jpeg]'
             ];
         
             if (!$this->validate($rules)) {
@@ -33,14 +34,17 @@ class Profile extends BaseController
                 if($data['image']->isValid() && !$data['image']->hasMoved()){
                     $data['image']->move('uploads/image', $data['image']->getRandomName());
                 }
+                if(!empty($this->request->getVar('password'))){
+                    $data['password'] = $this->request->getVar('password');
+                 
+                }
                 $updateData = [
                     'username' => $this->request->getVar('username'),
                     'email' => $this->request->getVar('email'),
                     'image' => $data['image']->getName(),
+                    'password' =>  password_hash($this->request->getVar('password'), PASSWORD_BCRYPT)
                 ];
-                if(!empty($this->request->getVar('password'))){
-                    $data['password'] = $this->request->getVar('password');
-                }
+               
                 $model = model(UserModel::class);
                 $model->update($id,$updateData);
                 $session = session();
@@ -49,5 +53,6 @@ class Profile extends BaseController
                 
             }
         }
+        return view('user/profile',$data);    
     }
 }
